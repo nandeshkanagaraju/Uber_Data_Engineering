@@ -86,8 +86,6 @@ dp.create_auto_cdc_flow(
   stored_as_scd_type = 1,
 )
 
-
-# Dim Location
 @dp.table
 def dim_location_view():
     df = spark.readStream.table("uber.bronze.silver_obt")
@@ -103,7 +101,6 @@ dp.create_auto_cdc_flow(
   sequence_by = "city_updated_at",
   stored_as_scd_type = 2,
 )
-
 
 # Fact Table
 @dp.view
@@ -121,30 +118,5 @@ dp.create_auto_cdc_flow(
   sequence_by = "ride_id",
   stored_as_scd_type = 1,
 )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

@@ -4,7 +4,7 @@ from pyspark.sql.types import *
 
 
 # Event Hubs configuration
-EH_NAMESPACE  = "uberevents"
+EH_NAMESPACE = "ubereventshub"
 EH_NAME = "ubertopic"
 
 
@@ -33,10 +33,3 @@ def rides_raw():
     df = df.withColumn("rides",col("value").cast("string"))
 
     return df
-
-
-
-
-
-
-

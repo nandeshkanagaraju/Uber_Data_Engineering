@@ -40,9 +40,9 @@ AS
     FROM 
         
             
-                STREAM (uber.bronze.stg_rides) 
-                WATERMARK booking_timestamp DELAY OF INTERVAL 3 MINUTES stg_rides
-            
+               STREAM (uber.bronze.stg_rides)
+               WATERMARK booking_timestamp DELAY OF INTERVAL 5 MINUTES stg_rides            
+        
             
                 LEFT JOIN uber.bronze.map_vehicle_makes map_vehicle_makes ON stg_rides.vehicle_make_id = map_vehicle_makes.vehicle_make_id
             
@@ -66,5 +66,3 @@ AS
             
                 LEFT JOIN uber.bronze.map_cancellation_reasons map_cancellation_reasons ON stg_rides.cancellation_reason_id = map_cancellation_reasons.cancellation_reason_id
             
-        
-   
