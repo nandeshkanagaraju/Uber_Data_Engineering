@@ -42,7 +42,7 @@ graph TD
 *   **Ingestion**: Event Hubs, Azure Data Factory (ADF)
 *   **Storage**: ADLS Gen2, Delta Lake
 *   **Processing**: Azure Databricks, PySpark, DLT
-*   **Tools**: Jinja2, `uv`, Python
+*   **Tools**: Jinja2, Python
 
 ---
 
