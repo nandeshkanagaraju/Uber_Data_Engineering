@@ -120,6 +120,40 @@ applies to every entry, so a fix to the join pattern is a fix everywhere at once
 
 ---
 
+## Running the producer
+
+The Databricks side of the project (ingestion notebooks, pipeline, model) runs in a workspace against
+your own Event Hubs namespace and ADLS Gen2 account. What you can run locally is the booking
+application that produces the events.
+
+Dependencies are managed with `uv` against the pins in `pyproject.toml`, on Python 3.12:
+
+```bash
+git clone https://github.com/nandeshkanagaraju/Uber_Data_Engineering.git
+cd Uber_Data_Engineering
+
+brew install uv          # or: curl -LsSf https://astral.sh/uv/install.sh | sh
+uv sync
+source .venv/bin/activate
+```
+
+`connection.py` reads its Event Hubs credentials from the environment, so create a `.env` in the
+project root before starting the app:
+
+```
+CONNECTION_STRING=<event hubs namespace connection string>
+EVENT_HUBNAME=<event hub name>
+```
+
+```bash
+python api.py
+```
+
+The booking page is then served at `http://localhost:8000`; requesting a ride generates a
+confirmation and publishes it to the hub.
+
+---
+
 ## Data quality
 
 Controls sit at the boundary where bad data would otherwise enter, upstream of the star schema, so a
